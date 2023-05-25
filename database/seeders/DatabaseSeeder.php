@@ -4,7 +4,10 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Category;
+use App\Models\Tag;
+use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,7 +18,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        User::create([
+            'name' => 'Shadab',
+            'email' => 'shadabkhan@gmail.com',
+            'password' => Hash::make('abcd1234'),
+        ]);
+        \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
@@ -25,7 +33,16 @@ class DatabaseSeeder extends Seeder
         $categories = ['Sports','Technology','Gaming'];
 
         foreach($categories as $category) {
-            Category::create(['name' => $category]);
+            $user = User::all()->random();
+            Category::create([
+                'name' => $category,
+                'created_by' => $user->id,
+                'last_updated_by' => $user->id
+            ]);
+        }
+
+        for($i=1;$i<10;$i++) {
+            Tag::create(['name'=>fake()->word]);
         }
     }
 }

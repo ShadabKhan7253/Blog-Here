@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Http\Requests\Categories\CreateCategoryRequest;
+use App\Http\Requests\Categories\UpdateCategoryRequest;
 use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
@@ -16,7 +17,7 @@ class CategoriesController extends Controller
     public function index()
     {
         // $categories = Category::orderBy('id','desc')->paginate(5);
-        $categories = Category::latest()->paginate(2);
+        $categories = Category::latest()->paginate(5);
         return view('admin.categories.index', compact('categories'));
     }
 
@@ -42,8 +43,13 @@ class CategoriesController extends Controller
         // request()->validate([
         //     'name' => 'required | min:3 | max:255'
         // ]);
+
+        $userId = auth()->user()->id;
+
         Category::create([
-            'name' => $request->name
+            'name' => $request->name,
+            'created_by' => $userId,
+            'last_updated_by' => $userId,
         ]);
 
         // session()->put('success','Category created successfully...');
@@ -68,9 +74,9 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        //
+        return view('admin.categories.edit',compact(['category']));
     }
 
     /**
@@ -80,9 +86,14 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateCategoryRequest $request,Category $category)
     {
-        //
+        $category->name = $request->name;
+        $category->save();
+
+        session()->flash('success','Category updated successfully...');
+        return redirect(route('admin.categories.index'));
+
     }
 
     /**
@@ -91,8 +102,11 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request,Category $category)
     {
-        //
+        // TODO: Validate whether the category has post associate with it. if not then only proceed
+        $category->delete();
+        session()->flash('success','Category deleted successfully...');
+        return redirect(route('admin.categories.index'));
     }
 }
