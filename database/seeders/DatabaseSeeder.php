@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Tag;
 use App\Models\User;
@@ -44,5 +46,7 @@ class DatabaseSeeder extends Seeder
         for($i=1;$i<10;$i++) {
             Tag::create(['name'=>fake()->word]);
         }
+
+        $this->call(BlogsSeeder::class);
     }
 }

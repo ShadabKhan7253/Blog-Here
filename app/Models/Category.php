@@ -10,4 +10,8 @@ class Category extends Model
     use HasFactory;
 
     protected $fillable = ['name','created_by','last_updated_by'];
+
+    public function blogs() {
+        return $this->hasMany(Blog::class);
+    }
 }
