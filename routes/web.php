@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\TagsController;
@@ -36,6 +37,7 @@ Route::middleware('auth')->group(function () {
 
         Route::resource('categories', CategoriesController::class);
         Route::resource('tags', TagsController::class);
+        Route::resource('blogs', BlogsController::class);
     });
 });
 
