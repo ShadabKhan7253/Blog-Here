@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Blog;
 use Closure;
 use Illuminate\Http\Request;
 
@@ -16,9 +17,16 @@ class ValidateAuthor
      */
     public function handle(Request $request, Closure $next)
     {
-        if(!auth()->user()->isOwner($request->blog)) {
+        if(!is_object($request->blog)) {
+            $blog = Blog::onlyTrashed()->find($request->blog);
+        } else {
+            $blog = $request->blog;
+        }
+
+        if(!auth()->user()->isOwner($blog)) {
             return abort(401);
         }
+
         return $next($request);
     }
 }

@@ -37,7 +37,11 @@ Route::middleware('auth')->group(function () {
 
         Route::resource('categories', CategoriesController::class)->except(['show']);
         Route::resource('tags', TagsController::class)->except(['show']);
+
+        Route::get('/blogs/trashed', [BlogsController::class,'trashed'])->name('blogs.trashed');
         Route::resource('blogs', BlogsController::class);
+        Route::delete('/blogs/{blog}/trash', [BlogsController::class,'trash'])->name('blogs.trash');
+        Route::put('/blogs/{blog}/restore', [BlogsController::class,'restore'])->name('blogs.restore');
     });
 });
 

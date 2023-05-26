@@ -13,7 +13,7 @@ class BlogsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['validateAuthor'])->only(['edit','update']);
+        $this->middleware(['validateAuthor'])->only(['edit','update','destroy','trash']);
     }
 
     public function index() {
@@ -82,6 +82,39 @@ class BlogsController extends Controller
         $blog->tags()->sync($request->tags);
 
         session()->flash('success','Blog updated seccessfully...');
+        return redirect(route('admin.blogs.index'));
+    }
+
+    public function trash(Blog $blog) {
+        $blog->delete();
+
+        session()->flash('success','Blog Deleted seccessfully...');
+        return redirect(route('admin.blogs.index'));
+    }
+
+    public function destroy(int $blogId) {
+        $blog = Blog::onlyTrashed()->find($blogId);
+        $blog->deleteImage();
+        $blog->forceDelete();
+
+        session()->flash('success','Blog Destroyed seccessfully...');
+        return redirect(route('admin.blogs.trashed'));
+    }
+
+    public function trashed() {
+        $blogs = Blog::with('category')
+            ->where('user_id',auth()->id())
+            ->onlyTrashed()
+            ->paginate(10);
+
+        return view('admin.blogs.trashed',compact('blogs'));
+    }
+
+    public function restore(int $blogId) {
+        $blog = Blog::withTrashed()->find($blogId);
+        $blog->restore();
+
+        session()->flash('success','Blog Restored seccessfully...');
         return redirect(route('admin.blogs.index'));
     }
 }
