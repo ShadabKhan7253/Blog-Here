@@ -9,6 +9,8 @@ class Blog extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     /* Relationship Method */
 
     public function author() {
@@ -22,6 +24,4 @@ class Blog extends Model
     public function tags() {
         return $this->belongsToMany(Tag::class)->withTimestamps();
     }
-
-
 }

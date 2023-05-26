@@ -35,8 +35,8 @@ Route::middleware('auth')->group(function () {
             return view('admin.dashboard');
         })->name('dashboard');
 
-        Route::resource('categories', CategoriesController::class);
-        Route::resource('tags', TagsController::class);
+        Route::resource('categories', CategoriesController::class)->except(['show']);
+        Route::resource('tags', TagsController::class)->except(['show']);
         Route::resource('blogs', BlogsController::class);
     });
 });
