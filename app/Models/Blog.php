@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Blog extends Model
 {
@@ -23,5 +24,13 @@ class Blog extends Model
 
     public function tags() {
         return $this->belongsToMany(Tag::class)->withTimestamps();
+    }
+
+    public function getImagePathAttribute() {
+        return '/storage/'.$this->attributes['image_path'];
+    }
+
+    public function deleteImage() {
+        Storage::delete($this->attributes['image_path']);
     }
 }
