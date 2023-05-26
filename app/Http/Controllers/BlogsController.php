@@ -11,8 +11,23 @@ use Illuminate\Http\Request;
 
 class BlogsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['validateAuthor'])->only(['edit','update']);
+    }
+
     public function index() {
-        $blogs = Blog::with('category')->latest()->paginate(10);
+
+        $authUser = auth()->user();
+        if($authUser->isAdmin()) {
+            $blogs = Blog::with('category')->latest()->paginate(10);
+        } else {
+            $blogs = Blog::with('category')
+                        ->where('user_id',$authUser->id)
+                        ->latest()
+                        ->paginate(10);
+        }
+
         return view('admin.blogs.index',compact('blogs'));
     }
 

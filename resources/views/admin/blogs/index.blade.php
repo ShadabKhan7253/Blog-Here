@@ -41,6 +41,11 @@
                     @endforeach
                 </tbody>
             </table>
+
+            @if ($blogs->count() == 0)
+                <p>No Blogs founds</p>
+            @endif
+
             {{ $blogs->links('vendor.pagination.bootstrap-5') }}
         </div>
     </div>

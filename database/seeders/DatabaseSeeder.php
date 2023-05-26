@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Shadab',
             'email' => 'shadabkhan@gmail.com',
             'password' => Hash::make('abcd1234'),
+            'role' => 'admin',
         ]);
         \App\Models\User::factory(10)->create();
 
@@ -43,15 +44,15 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        // $tags = ['Java','C Programming','Python','Cricket'];
-        // $user = User::all()->random();
-        // foreach($tags as $tag) {
-        //     Tag::create(['name'=>$tags]);
-        // }
-
-        for($i=1;$i<10;$i++) {
-            Tag::create(['name'=>fake()->word]);
+        $tags = ['Java','C Programming','Python','Cricket'];
+        $user = User::all()->random();
+        foreach($tags as $tag) {
+            Tag::create(['name'=>$tag]);
         }
+
+        // for($i=1;$i<10;$i++) {
+        //     Tag::create(['name'=>fake()->word]);
+        // }
 
         $this->call(BlogsSeeder::class);
     }
