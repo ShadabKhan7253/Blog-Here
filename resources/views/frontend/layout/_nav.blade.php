@@ -7,7 +7,7 @@
                 <i class="fa fa-bars"></i>
             </button>
             <a class="navbar-brand page-scroll" href="#page-top">
-                <img src="{{ asset('frontend/assets/img/logo/logo-default.png')}}" alt="logo">
+                <img src="{{ asset('frontend/assets/img/logo/logo-default.png') }}" alt="logo">
                 Pen-It
             </a>
         </div>
@@ -16,6 +16,9 @@
             <ul class="nav navbar-nav">
                 <li>
                     <a href="index.html" data-toggle="dropdown" class="dropdown-toggle color-light">Home </a>
+                </li>
+                <li>
+                    <a href="{{ route('login') }}" class="dropdown-toggle color-light">Login </a>
                 </li>
             </ul>
 

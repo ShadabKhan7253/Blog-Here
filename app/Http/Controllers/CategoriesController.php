@@ -22,7 +22,7 @@ class CategoriesController extends Controller
     public function index()
     {
         // $categories = Category::orderBy('id','desc')->paginate(5);
-        $categories = Category::latest()->paginate(5);
+        $categories = Category::withCount('blogs')->latest()->paginate(5);
         return view('admin.categories.index', compact('categories'));
     }
 
@@ -110,6 +110,11 @@ class CategoriesController extends Controller
     public function destroy(Request $request,Category $category)
     {
         // TODO: Validate whether the category has post associate with it. if not then only proceed
+        if($category->blogs()->count() > 0) {
+            session()->flash('error','Category connot be deleted as it has post associated');
+            return redirect(route('admin.categories.index'));
+        }
+
         $category->delete();
         session()->flash('success','Category deleted successfully...');
         return redirect(route('admin.categories.index'));

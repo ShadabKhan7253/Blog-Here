@@ -6,10 +6,11 @@
     <!-- Search
                 ===================================== -->
     <div class="pr25 pl25 clearfix">
-        <form action="#">
+        <form action="{{ Route::currentRouteName() == 'frontend.blogs.show' ? route('home') : '#' }}">
             <div class="blog-sidebar-form-search">
-                <input type="text" name="search" class="" placeholder="e.g. Javascript">
-                <button type="submit" name="submit" class="pull-right"><i class="fa fa-search"></i></button>
+                <input type="text" name="search" value="{{ request()->search }}" class=""
+                    placeholder="e.g. Javascript">
+                <button type="submit" class="pull-right"><i class="fa fa-search"></i></button>
             </div>
         </form>
 
@@ -26,7 +27,7 @@
         <ul class="blog-sidebar pl25">
             @foreach ($categories as $category)
                 <li>
-                    <a href="#">{{ $category->name }}<span
+                    <a href="{{ route('frontend.category', $category->id) }}">{{ $category->name }}<span
                             class="badge badge-pasific pull-right">{{ $category->blogs_count }}</span>
                     </a>
                 </li>
@@ -46,7 +47,7 @@
         <ul class="tag">
             @foreach ($tags as $tag)
                 <li>
-                    <a href="#">{{ $tag->name }}</a>
+                    <a href="{{ route('frontend.tag', $category->id) }}">{{ $tag->name }}</a>
                 </li>
             @endforeach
         </ul>
