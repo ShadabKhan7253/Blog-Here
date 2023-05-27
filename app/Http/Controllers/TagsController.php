@@ -10,6 +10,10 @@ use Illuminate\Http\Request;
 
 class TagsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['validateAdmin'])->only(['create','edit','update','destroy','trash']);
+    }
     /**
      * Display a listing of the resource.
      *

@@ -2,11 +2,10 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\Blog;
 use Closure;
 use Illuminate\Http\Request;
 
-class ValidateAuthor
+class ValidateAdmin
 {
     /**
      * Handle an incoming request.
@@ -17,15 +16,11 @@ class ValidateAuthor
      */
     public function handle(Request $request, Closure $next)
     {
-        // dd($request->blog);
-        if(!is_object($request->blog)) {
-            $blog = Blog::onlyTrashed()->find($request->blog);
-        } else {
-            $blog = $request->blog;
-        }
 
-        if(!auth()->user()->isOwner($blog)) {
-            return abort(401);
+        // dd(auth()->user()->role);
+        $authUser = auth()->user();
+        if(!$authUser->isAdmin()) {
+            abort(401);
         }
         return $next($request);
     }
