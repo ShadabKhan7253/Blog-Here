@@ -32,9 +32,9 @@
                             <td>{{ $blog->excerpt }} </td>
                             <td>{{ $blog->category->name }} </td>
                             <td>
-                                <a href="{{ route('admin.blogs.edit',$blog->id) }}" class="btn btn-primary"><i class="fas fa-pen"></i></a>
+                                <a href="{{ route('admin.blogs.edit',$blog->id) }}" class="btn btn-primary mb-2"><i class="fas fa-pen"></i></a>
                                 <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal"
-                                 onclick="deleteModalHelper('{{ route('admin.blogs.trash',$blog->id) }}')"><i class="fa fa-trash"></i></button>
+                                     onclick="deleteModalHelper('{{ route('admin.blogs.trash',$blog->id) }}')"><i class="fa fa-trash"></i></button>
                             </td>
                         </tr>
 

@@ -13,6 +13,10 @@ class Blog extends Model
 
     protected $guarded = [];
 
+    protected $casts = [
+        'published_at' => 'datetime',
+    ];
+
     /* Relationship Method */
 
     public function author() {
