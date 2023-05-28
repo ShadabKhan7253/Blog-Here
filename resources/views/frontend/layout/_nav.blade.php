@@ -8,7 +8,7 @@
             </button>
             <a class="navbar-brand page-scroll" href="#page-top">
                 <img src="{{ asset('frontend/assets/img/logo/logo-default.png') }}" alt="logo">
-                Pen-It
+                Blog-Here
             </a>
         </div>
 

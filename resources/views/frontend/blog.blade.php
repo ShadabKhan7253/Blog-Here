@@ -3,7 +3,7 @@
 @section('content')
 
     <!-- Blog Area
-                                                ===================================== -->
+                                                                            ===================================== -->
     <section id="blog" class="pt75 pb50">
         <div class="container">
 
@@ -42,66 +42,27 @@
                         </div>
                     </div>
 
-                    {{-- <div class="blog-post-author mb50 pt30 bt-solid-1">
-                        <img src="assets/img/other/photo-1.jpg" class="img-circle" alt="image">
-                        <span class="blog-post-author-name">John Boo</span> <a href="https://twitter.com/booisme"><i
-                                class="fa fa-twitter"></i></a>
-                        <p>
-                            Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi
-                            ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate
-                            velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
-                            pariatur.
-                        </p>
-                    </div> --}}
-
-
-                    <div class="blog-post-comment-container">
-                        <h5><i class="fa fa-comments-o mb25"></i> 20 Comments</h5>
-
-                        <div class="blog-post-comment">
-                            <img src="assets/img/other/photo-2.jpg" class="img-circle" alt="image">
-                            <span class="blog-post-comment-name">John Boo</span> Jan. 20 2016, 10:00 PM
-                            <a href="#" class="pull-right text-gray"><i class="fa fa-comment"></i> Reply</a>
-                            <p>
-                                Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae
-                                consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.
-                            </p>
-                        </div>
-
-                        <div class="blog-post-comment">
-                            <img src="assets/img/other/photo-4.jpg" class="img-circle" alt="image">
-                            <span class="blog-post-comment-name">John Boo</span> Jan. 20 2016, 10:00 PM
-                            <a href="#" class="pull-right text-gray"><i class="fa fa-comment"></i> Reply</a>
-                            <p>
-                                Adipisci velit sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam.
-                            </p>
-
-                            <div class="blog-post-comment-reply">
-                                <img src="assets/img/other/photo-2.jpg" class="img-circle" alt="image">
-                                <span class="blog-post-comment-name">John Boo</span> Jan. 20 2016, 10:00 PM
-                                <a href="#" class="pull-right text-gray"><i class="fa fa-comment"></i> Reply</a>
-                                <p>
-                                    Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil
-                                    molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.
-                                </p>
-                            </div>
-
-                        </div>
-
-                        <div class="blog-post-comment">
-                            <img src="assets/img/other/photo-1.jpg" class="img-circle" alt="image">
-                            <span class="blog-post-comment-name">John Boo</span> Jan. 20 2016, 10:00 PM
-                            <a href="#" class="pull-right text-gray"><i class="fa fa-comment"></i> Reply</a>
-                            <p>
-                                Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet consectetur adipisci velit.
-                            </p>
-                        </div>
-
-                        <button class="button button-default button-sm center-block button-block mt25 mb25">Load More
-                            Comments</button>
-
-
-                    </div>
+                    <div id="disqus_thread"></div>
+                    <script>
+                        /**
+                         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+                        /*
+                        var disqus_config = function () {
+                        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                        };
+                        */
+                        (function() { // DON'T EDIT BELOW THIS LINE
+                            var d = document,
+                                s = d.createElement('script');
+                            s.src = 'https://blog-website-10.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
+                        })();
+                    </script>
+                    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments
+                            powered by Disqus.</a></noscript>
 
                     <div class="blog-post-leave-comment">
                         <h5><i class="fa fa-comment mt25 mb25"></i> Leave Comment</h5>
@@ -120,12 +81,12 @@
 
                 </div>
                 <!-- Blog Sidebar
-                                                                        ===================================== -->
+                                                                                                    ===================================== -->
                 <div id="sidebar" class="col-md-3 mt50 animated" data-animation="fadeInRight" data-animation-delay="250">
 
 
                     <!-- Search
-                                                                ===================================== -->
+                                                                                            ===================================== -->
                     <div class="pr25 pl25 clearfix">
                         <form action="#">
                             <div class="blog-sidebar-form-search">
@@ -139,7 +100,7 @@
 
 
                     <!-- Categories
-                                                                ===================================== -->
+                                                                                            ===================================== -->
                     <div class="mt25 pr25 pl25 clearfix">
                         <h5 class="mt25">
                             Categories
@@ -162,7 +123,7 @@
 
 
                     <!-- Tags
-                                                                ===================================== -->
+                                                                                            ===================================== -->
                     <div class="pr25 pl25 clearfix">
                         <h5 class="mt25">
                             Popular Tags

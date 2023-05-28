@@ -1,35 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <title>Pen-It | Bloggers Heaven</title>
+    <title>Blog-Here | Bloggers Heaven</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta charset="utf-8">
     <meta name="author" content="John Doe">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
     <!-- Favicons -->
-    <link rel="shortcut icon" href="{{ asset('frontend/assets/img/favicon.png')}}">
-    <link rel="apple-touch-icon" href="{{ asset('frontend/assets/img/apple-touch-icon.png')}}">
-    <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('frontend/assets/img/apple-touch-icon-72x72.png')}}">
-    <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('frontend/assets/img/apple-touch-icon-114x114.png')}}">
+    <link rel="shortcut icon" href="{{ asset('frontend/assets/img/favicon.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('frontend/assets/img/apple-touch-icon.png') }}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('frontend/assets/img/apple-touch-icon-72x72.png') }}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('frontend/assets/img/apple-touch-icon-114x114.png') }}">
 
     <!-- Load Core CSS
     =====================================-->
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/core/bootstrap-3.3.7.min.css')}}">
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/core/animate.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/core/bootstrap-3.3.7.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/core/animate.min.css') }}">
 
     <!-- Load Main CSS
     =====================================-->
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/main/main.css')}}">
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/main/setting.css')}}">
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/main/hover.css')}}">
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/main/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/main/setting.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/main/hover.css') }}">
 
 
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/color/pasific.css')}}">
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/icon/font-awesome.css')}}">
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/icon/et-line-font.css')}}">
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/color/pasific.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/icon/font-awesome.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/icon/et-line-font.css') }}">
 
     @yield('styles')
 
@@ -44,50 +45,52 @@
     <![endif]-->
 
 </head>
+
 <body id="topPage" data-spy="scroll" data-target=".navbar" data-offset="100">
 
 
 
-<!-- Page Loader
+    <!-- Page Loader
 ===================================== -->
-<div id="pageloader" class="bg-grad-animation-1">
-    <div class="loader-item">
-        <img src="{{ asset('frontend/assets/img/other/oval.svg')}}" alt="page loader">
+    <div id="pageloader" class="bg-grad-animation-1">
+        <div class="loader-item">
+            <img src="{{ asset('frontend/assets/img/other/oval.svg') }}" alt="page loader">
+        </div>
     </div>
-</div>
 
-<a href="#page-top" class="go-to-top">
-    <i class="fa fa-long-arrow-up"></i>
-</a>
-
-
-@include('frontend.layout._nav')
+    <a href="#page-top" class="go-to-top">
+        <i class="fa fa-long-arrow-up"></i>
+    </a>
 
 
-@yield('content')
-
-@include('frontend.layout._footer')
+    @include('frontend.layout._nav')
 
 
-<!-- JQuery Core
+    @yield('content')
+
+    @include('frontend.layout._footer')
+
+
+    <!-- JQuery Core
 =====================================-->
-<script src="{{ asset('frontend/assets/js/core/jquery.min.js')}}"></script>
-<script src="{{ asset('frontend/assets/js/core/bootstrap-3.3.7.min.js')}}"></script>
+    <script src="{{ asset('frontend/assets/js/core/jquery.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/core/bootstrap-3.3.7.min.js') }}"></script>
 
-<!-- Magnific Popup
+    <!-- Magnific Popup
 =====================================-->
-<script src="{{ asset('frontend/assets/js/magnific-popup/jquery.magnific-popup.min.js')}}"></script>
-<script src="{{ asset('frontend/assets/js/magnific-popup/magnific-popup-zoom-gallery.js')}}"></script>
+    <script src="{{ asset('frontend/assets/js/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/magnific-popup/magnific-popup-zoom-gallery.js') }}"></script>
 
-<!-- JQuery Main
+    <!-- JQuery Main
 =====================================-->
-<script src="{{ asset('frontend/assets/js/main/jquery.appear.js')}}"></script>
-<script src="{{ asset('frontend/assets/js/main/isotope.pkgd.min.js')}}"></script>
-<script src="{{ asset('frontend/assets/js/main/parallax.min.js')}}"></script>
-<script src="{{ asset('frontend/assets/js/main/jquery.sticky.js')}}"></script>
-<script src="{{ asset('frontend/assets/js/main/imagesloaded.pkgd.min.js')}}"></script>
-<script src="{{ asset('frontend/assets/js/main/main.js')}}"></script>
+    <script src="{{ asset('frontend/assets/js/main/jquery.appear.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/main/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/main/parallax.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/main/jquery.sticky.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/main/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/main/main.js') }}"></script>
 
-@yield('scripts')
+    @yield('scripts')
 </body>
+
 </html>

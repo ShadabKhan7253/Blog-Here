@@ -1,4 +1,3 @@
-
 <!-- Footer Area
 =====================================-->
 <footer id="footer" class="footer-one center-block bg-light pt50 pb30 ">
@@ -6,18 +5,18 @@
         <div class="row">
 
             <div class="col-md-2 col-xs-12 mb25">
-                <div class="navbar-brand-footer center-block">Pen-It</div>
+                <div class="navbar-brand-footer center-block" style="width=100% !important;">Blog-Here</div>
                 <div class="copyright center-block">&copy; 2020. All rights reserved.</div>
             </div>
 
             <div class="col-md-8 col-xs-12 text-center">
                 <div class="row">
-                    <div class="col-sm-12">
+                    {{-- <div class="col-sm-12">
                         <ul class=" bb-solid-1">
                             <li><a href="#">Home</a></li>
                             <li><a href="#">Post</a></li>
                         </ul>
-                    </div>
+                    </div> --}}
 
                     <div class="col-sm-12 mt25">
                         <ul>

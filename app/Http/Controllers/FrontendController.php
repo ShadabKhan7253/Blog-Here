@@ -37,7 +37,7 @@ class FrontendController extends Controller
     }
 
     public function tag(Tag $tag) {
-        $blogs = $tag->blogs()->search()->published()->simplePaginate(3);
+        $blogs = $tag->blogs()->search()->published()->simplePaginate(2);
         $categories = Category::withCount('blogs')->get();
         $tags = Tag::limit(10)->get();
         return view('frontend.index',compact([
