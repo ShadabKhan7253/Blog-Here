@@ -12,6 +12,8 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    const ADMIN = 'admin';
+    const AUTHOR = 'author';
     /**
      * The attributes that are mass assignable.
      *
@@ -52,5 +54,17 @@ class User extends Authenticatable
 
     public function isOwner(Blog $blog): bool {
         return $this->id === $blog->user_id;
+    }
+
+    public function emailVerifiedAt(): bool {
+        return $this->email_verified_at != NULL;
+    }
+
+    public function changeRole(string $role) {
+        return $this->role = $role;
+    }
+
+    public function getNameAttribute() {
+        return $this->attributes['name'];
     }
 }
