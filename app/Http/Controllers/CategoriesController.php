@@ -93,6 +93,7 @@ class CategoriesController extends Controller
      */
     public function update(UpdateCategoryRequest $request,Category $category)
     {
+        // dd($request);
         $category->name = $request->name;
         $category->save();
 

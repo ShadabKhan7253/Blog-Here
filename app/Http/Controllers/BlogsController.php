@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Blogs\CreateBlogRequest;
 use App\Http\Requests\Blogs\UpdateBlogRequest;
+use App\Http\Requests\UpdatePublishRequest;
 use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Tag;
@@ -14,10 +15,10 @@ class BlogsController extends Controller
     public function __construct()
     {
         $this->middleware(['validateAuthor'])->only(['edit','update','destroy','trash']);
+        $this->middleware(['validateAdmin'])->only(['publish']);
     }
 
     public function index() {
-
         $authUser = auth()->user();
         if($authUser->isAdmin()) {
             $blogs = Blog::with('category')->latest()->paginate(10);
@@ -115,6 +116,16 @@ class BlogsController extends Controller
         $blog->restore();
 
         session()->flash('success','Blog Restored seccessfully...');
+        return redirect(route('admin.blogs.index'));
+    }
+
+    public function publish(Blog $blog) {
+        // dd($request);
+        $blog->published = ($blog->published == 'Yes') ? 'No' : 'Yes';
+        $blog->save();
+
+        $msg = ($blog->published == 'Yes') ? 'published' : 'unpublished';
+        session()->flash('success','Blog ' . $msg . ' seccessfully...');
         return redirect(route('admin.blogs.index'));
     }
 }
