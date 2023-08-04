@@ -31,6 +31,10 @@ class Blog extends Model
         return $this->belongsToMany(Tag::class)->withTimestamps();
     }
 
+    public function comments() {
+        return $this->hasMany(Comment::class);
+    }
+
     public function getImagePathAttribute() {
         return '/storage/'.$this->attributes['image_path'];
     }
@@ -49,5 +53,9 @@ class Blog extends Model
             $query = $query->where('title','like',"%$searchParam%");
         }
         return $query;
+    }
+
+    public function scopeIsPublished($query) {
+        return $query->where('published',"Yes");
     }
 }
