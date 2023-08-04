@@ -6,6 +6,7 @@ use App\Models\Category;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Blog;
+use App\Models\Comment;
 use App\Models\Tag;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -26,6 +27,7 @@ class BlogsSeeder extends Seeder
             'excerpt' => fake()->sentence(15),
             'body' => fake()->paragraph(rand(3,7),true),
             'image_path' => 'blogs/1.jpg',
+            'published' => 'No',
             'category_id' => $categories->random()->id,
             'user_id' => $users->random()->id,
             'published_at' => Carbon::now()->format('Y-m-d H:i:s')
@@ -36,6 +38,7 @@ class BlogsSeeder extends Seeder
             'excerpt' => fake()->sentence(15),
             'body' => fake()->paragraph(rand(3,7),true),
             'image_path' => 'blogs/2.jpg',
+            'published' => 'No',
             'category_id' => $categories->random()->id,
             'user_id' => $users->random()->id,
             'published_at' => Carbon::now()->format('Y-m-d H:i:s')
@@ -46,6 +49,7 @@ class BlogsSeeder extends Seeder
             'excerpt' => fake()->sentence(15),
             'body' => fake()->paragraph(rand(3,7),true),
             'image_path' => 'blogs/3.jpg',
+            'published' => 'No',
             'category_id' => $categories->random()->id,
             'user_id' => $users->random()->id,
             'published_at' => Carbon::now()->format('Y-m-d H:i:s')
@@ -56,6 +60,7 @@ class BlogsSeeder extends Seeder
             'excerpt' => fake()->sentence(15),
             'body' => fake()->paragraph(rand(3,7),true),
             'image_path' => 'blogs/4.jpg',
+            'published' => 'No',
             'category_id' => $categories->random()->id,
             'user_id' => $users->random()->id,
             'published_at' => Carbon::now()->format('Y-m-d H:i:s')
@@ -66,6 +71,7 @@ class BlogsSeeder extends Seeder
             'excerpt' => fake()->sentence(15),
             'body' => fake()->paragraph(rand(3,7),true),
             'image_path' => 'blogs/5.jpg',
+            'published' => 'No',
             'category_id' => $categories->random()->id,
             'user_id' => $users->random()->id,
             'published_at' => Carbon::now()->format('Y-m-d H:i:s')
@@ -97,5 +103,6 @@ class BlogsSeeder extends Seeder
             ->pluck('id')
             ->toArray()
         );
+
     }
 }

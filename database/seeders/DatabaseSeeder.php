@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\Blog;
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -50,10 +51,18 @@ class DatabaseSeeder extends Seeder
             Tag::create(['name'=>$tag]);
         }
 
-        // for($i=1;$i<10;$i++) {
-        //     Tag::create(['name'=>fake()->word]);
-        // }
-
         $this->call(BlogsSeeder::class);
+
+        $blogs = Blog::all();
+        $users = User::all();
+        for($i=1;$i<=10;$i++) {
+            Comment::create([
+                'comment' => fake()->paragraph(random_int(1,4)),
+                'approved_by' => $users->random()->name,
+                'image_path' => 'users/'.$i.'.jpg',
+                'blog_id' => $blogs->random()->id,
+                'user_id' => $users->random()->id,
+            ]);
+        }
     }
 }

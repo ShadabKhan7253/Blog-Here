@@ -3,8 +3,10 @@
 use App\Http\Controllers\BlogsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\TagsController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,10 +49,20 @@ Route::middleware('auth')->group(function () {
         Route::resource('categories', CategoriesController::class)->except(['show']);
         Route::resource('tags', TagsController::class)->except(['show']);
 
+
         Route::get('/blogs/trashed', [BlogsController::class,'trashed'])->name('blogs.trashed');
         Route::resource('blogs', BlogsController::class);
         Route::delete('/blogs/{blog}/trash', [BlogsController::class,'trash'])->name('blogs.trash');
+        Route::put('/blogs/{blog}/publish', [BlogsController::class,'publish'])->name('blogs.publish');
         Route::put('/blogs/{blog}/restore', [BlogsController::class,'restore'])->name('blogs.restore');
+
+        Route::resource('users', UserController::class);
+        Route::put('users/makeAdmin/{user}', [UserController::class, 'makeAdmin'])->name('users.makeAdmin');
+        Route::put('users/revokeAdmin/{user}', [UserController::class, 'revokeAdmin'])->name('users.revokeAdmin');
+        Route::get('authorized-user', [UserController::class,'authorized']);
+        Route::get('unauthorized-user', [UserController::class,'unauthorized'])->name('users');
+
+        Route::resource('comment', CommentController::class);
     });
 });
 

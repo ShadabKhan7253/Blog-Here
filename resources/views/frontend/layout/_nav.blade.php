@@ -7,7 +7,7 @@
                 <i class="fa fa-bars"></i>
             </button>
             <a class="navbar-brand page-scroll" href="#page-top">
-                <img src="{{ asset('frontend/assets/img/logo/logo-default.png') }}" alt="logo">
+                <img src="{{ asset('frontend/assets/img/logo/logo-default2.png') }}" alt="logo">
                 Blog-Here
             </a>
         </div>

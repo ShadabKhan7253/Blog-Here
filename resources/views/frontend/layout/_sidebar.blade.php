@@ -47,7 +47,7 @@
         <ul class="tag">
             @foreach ($tags as $tag)
                 <li>
-                    <a href="{{ route('frontend.tag', $category->id) }}">{{ $tag->name }}</a>
+                    <a href="{{ route('frontend.tag', $tag->id) }}">{{ $tag->name }}</a>
                 </li>
             @endforeach
         </ul>

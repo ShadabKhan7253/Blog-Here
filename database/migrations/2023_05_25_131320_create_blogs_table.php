@@ -19,22 +19,29 @@ return new class extends Migration
             $table->string('excerpt');
             $table->longText('body');
             $table->string('image_path');
+            $table->string('published')->default('No');
             $table->timestamp('published_at')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('category_id');
+            // $table->unsignedBigInteger('comment_id');
             $table->softDeletes();
             $table->timestamps();
 
             $table->foreign('user_id')
-            ->references('id')
-            ->on('users')
-            ->onDelete('cascade');
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
 
 
             $table->foreign('category_id')
-            ->references('id')
-            ->on('categories')
-            ->onDelete('cascade');
+                ->references('id')
+                ->on('categories')
+                ->onDelete('cascade');
+
+            // $table->foreign('comment_id')
+            //     ->references('id')
+            //     ->on('comments')
+            //     ->onDelete('cascade');
         });
     }
 

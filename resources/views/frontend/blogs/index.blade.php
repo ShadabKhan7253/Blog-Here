@@ -8,6 +8,8 @@
     </style>
 @endsection
 
+
+
 @section('content')
     <header class="pt100 pb100 parallax-window-2" data-parallax="scroll" data-speed="0.5"
         data-image-src="{{ asset('frontend/assets/img/bg/img-bg-17.jpg') }}" data-positiony="1000">
@@ -29,11 +31,11 @@
     <!-- Blog Area===================================== -->
     <div id="blog" class="pt20 pb50">
         <div class="container">
-
             <div class="row">
                 <div class="col-md-9 mt25">
                     <div class="row">
                         @foreach ($blogs as $blog)
+                            {{-- @if ($blog->published == 'Yes') --}}
                             <div class="col-md-4 col-sm-6 col-xs-12 mb50">
                                 <h4 class="blog-title">
                                     <a href="{{ route('frontend.blogs.show', $blog->id) }}">{{ $blog->title }}</a>
@@ -49,25 +51,26 @@
                                 <a href="{{ route('frontend.blogs.show', $blog->id) }}"
                                     class="button button-gray button-xs">Read More <i
                                         class="fa fa-long-arrow-right"></i></a>
-
                             </div>
+                            {{-- @else
+                                <h2>No record</h2> --}}
+                            {{-- @endif --}}
                         @endforeach
                     </div>
 
                     {{ $blogs->appends(['search' => request()->search])->links('pagination::simple-bootstrap-5') }}
-                </div>
 
+                </div>
 
                 @include('frontend.layout._sidebar');
 
             </div>
-
         </div>
     </div>
 
 
     <!-- Newsletter Area
-                                                                                    =====================================-->
+                                                                                                                                                                            =====================================-->
     <div id="newsletter" class="bg-dark2 pt50 pb50">
         <div class="container">
             <div class="row">
